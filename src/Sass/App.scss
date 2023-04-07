@@ -1,10 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@;400;700&display=swap');
+
+$fontFamily: 'Inter', sans-serif;
+$white: #ffffff;
+$black:#303030;
+
+
 *{
     box-sizing: border-box;
     margin: 0;
 }
+
 body{
-    height: 100svh;
+    height: 100%;
+    font-family: $fontFamily;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    backdrop-filter: brightness(65%);
+    color: $white;
+    
 }
+
+#root{
+    height: 100svh;
+    padding: 1em;
+    display: grid;
+    gap: 1em;
+    grid-template-columns: 1fr;
+    grid-template-rows: .1fr 1fr .1fr;
+    grid-template-areas:
+    'quote'
+    'clock'
+    'btn'
+    'moreInfo';
+
+    @media screen and (min-width:500px) {
+        padding: 3em 5em ;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: .1fr 1fr;
+        grid-template-areas:
+        'quote .'
+        'clock btn';
+    }
+
+}
+
+.quote{ 
+    
+    grid-area: quote;
+    font-weight: 400;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr .1fr;
+    gap: 1em;
+    grid-template-areas: 
+    'text btn'
+    'author btn';
+
+    &__text{
+        grid-area: text;
+        line-height: 1.5;
+    }
+
+    &__author{
+        grid-area: author;
+        font-weight: 700;
+    }
+
+    &__btn{grid-area:btn;}
+}
+
+.clock{
+    grid-area: clock;
+    align-self: end;
+    &__btn{
+    grid-area: btn;
+    }
+
+    &__greeting{
+        display: flex;
+        align-items: center;
+        gap: 1em;
+        text-transform: uppercase;
+    }
+    
+    &__time{
+        grid-area: clock;
+        font-size: 6rem;
+        font-weight: 700;
+    }
+
+    &__standard{
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    &__location{
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 700;
+    }
+
+    &__btn{
+        display: flex;
+        align-items: center;
+        gap: .2em;
+        padding: .5em;
+        width: 115px;
+        height: 45px;
+        border-radius: 2em;
+        background-color: $white;
+        color: $black;
+    
+        &__text{
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+        @media screen and (min-width:500px) {
+           align-self: flex-end;
+           justify-self: flex-end;
+        }
+    }
+}
+
+.moreInfo{
+    display:none;
+    grid-area: moreInfo;
+}
+

@@ -4,6 +4,9 @@ import Moon from '../assets/desktop/icon-moon.svg'
 import Sun from '../assets/desktop/icon-sun.svg'
 import dayBackground from '../assets/desktop/bg-image-daytime.jpg'
 import nightBackground from '../assets/desktop/bg-image-nighttime.jpg'
+import arrowUp from '../assets/desktop/icon-arrow-up.svg'
+import arrowDown from '../assets/desktop/icon-arrow-down.svg'
+
 export function Clock() {
     const [timeData, setTimeData] = useState()
     const [greeting, setGreeting] = useState({})
@@ -41,18 +44,23 @@ export function Clock() {
       }
     };
     
-
     if (!timeData) {
       return <div>Loading...</div>
     }
 
     return (
-    <div className='clock'>
-        <p className='clock__greeting'> <img src={greeting.icon} alt="icon"/>{greeting.text}</p>
-        <p className='clock__time'>{`${hour} : ${minute}`} <span className='clock__standard'>{timeData.abbreviation}</span></p>
-        
-        <p className='clock__location'>{timeData.timezone}</p>
-    </div>
-  )
+      <>
+        <div className='clock'>
+            <p className='clock__greeting'> <img src={greeting.icon} alt="icon"/>{greeting.text}</p>
+            <p className='clock__time'>{`${hour}:${minute}`} <span className='clock__standard'>{timeData.abbreviation}</span></p>
+            
+            <p className='clock__location'>in {timeData.timezone}</p>
+        </div>
+        <div className='clock__btn'>
+          <span className='clock__btn__text'>more</span>
+          <img  className='clock__btn__img' src={arrowUp} alt="icon"/>
+        </div>
+      </>
+    )
 }
 
