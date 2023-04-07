@@ -3,19 +3,20 @@ import { useState, useEffect } from 'react'
 
 
 
-export function MoreInfo() {
-    const [moreData, setMoreData] = useState()
-    
+export function MoreInfo(isopen={isopen}) {
+  const [moreData, setMoreData] = useState()
+  
+  useEffect(() => {
+    CLOCK_API.getTime().then(setMoreData)
+  }, [])
+  
+  if (!moreData) {
+    return <div>Loading...</div>
+  }
 
-    useEffect(() => {
-      CLOCK_API.getTime().then(setMoreData)
-    }, [])
-    
-    if (!moreData) {
-      return <div>Loading...</div>
-    }
   return (
-    <div className='moreInfo'>
+    
+    <div className={isopen.props? 'moreInfo':"moreInfo hidden"}>
         <div className="moreInfo__timezone">
             <p className="timezone__tag">current timezone</p>
             <p className="timezone__text">{moreData.timezone}</p>

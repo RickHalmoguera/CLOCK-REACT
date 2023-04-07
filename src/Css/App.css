@@ -17,11 +17,10 @@ body {
 
 #root {
   height: 100svh;
-  padding: 1em;
   display: grid;
   gap: 1em;
   grid-template-columns: 1fr;
-  grid-template-rows: 0.1fr 1fr 0.1fr;
+  grid-template-rows: 0.1fr 1fr 0.1fr 1fr;
   grid-template-areas: "quote" "clock" "btn" "moreInfo";
 }
 @media screen and (min-width: 500px) {
@@ -34,11 +33,12 @@ body {
 }
 
 .quote {
+  padding: 2em;
   grid-area: quote;
   font-weight: 400;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 0.1fr;
+  grid-template-columns: 1fr 0.1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 1em;
   grid-template-areas: "text btn" "author btn";
 }
@@ -53,8 +53,14 @@ body {
 .quote__btn {
   grid-area: btn;
 }
+@media screen and (min-width: 1000px) {
+  .quote {
+    grid-template-columns: 0.5fr 0.3fr;
+  }
+}
 
 .clock {
+  padding: 0 2em;
   grid-area: clock;
   align-self: end;
 }
@@ -82,6 +88,10 @@ body {
   font-weight: 700;
 }
 .clock__btn {
+  margin-left: 2em;
+  cursor: pointer;
+  align-self: self-end;
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.2em;
@@ -97,6 +107,11 @@ body {
   font-weight: 700;
   letter-spacing: 3px;
 }
+.clock__btn__img {
+  position: absolute;
+  right: 5px;
+  transition: 0.3s all linear;
+}
 @media screen and (min-width: 500px) {
   .clock__btn {
     align-self: flex-end;
@@ -105,6 +120,24 @@ body {
 }
 
 .moreInfo {
+  color: #303030;
+  background: rgba(255, 255, 255, 0.7882352941);
+  display: flex;
+  flex-direction: column;
+}
+
+.inverted {
+  transform: rotate(180deg);
+}
+
+.hidden {
   display: none;
+}
+
+.alignUp {
+  align-self: flex-start;
+}
+
+.moreInfo {
   grid-area: moreInfo;
 }/*# sourceMappingURL=App.css.map */

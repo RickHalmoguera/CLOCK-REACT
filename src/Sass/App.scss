@@ -23,11 +23,10 @@ body{
 
 #root{
     height: 100svh;
-    padding: 1em;
     display: grid;
     gap: 1em;
     grid-template-columns: 1fr;
-    grid-template-rows: .1fr 1fr .1fr;
+    grid-template-rows: .1fr 1fr .1fr 1fr;
     grid-template-areas:
     'quote'
     'clock'
@@ -46,12 +45,12 @@ body{
 }
 
 .quote{ 
-    
+    padding:2em;
     grid-area: quote;
     font-weight: 400;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr .1fr;
+    grid-template-columns: 1fr .1fr;
+    grid-template-rows: 1fr 1fr;
     gap: 1em;
     grid-template-areas: 
     'text btn'
@@ -68,9 +67,15 @@ body{
     }
 
     &__btn{grid-area:btn;}
+
+    @media screen and (min-width:1000px) {
+        grid-template-columns: .5fr .3fr;
+      
+    }
 }
 
 .clock{
+    padding:0 2em;
     grid-area: clock;
     align-self: end;
     &__btn{
@@ -102,6 +107,10 @@ body{
     }
 
     &__btn{
+        margin-left: 2em;
+        cursor: pointer;
+        align-self: self-end;
+        position: relative;
         display: flex;
         align-items: center;
         gap: .2em;
@@ -117,6 +126,12 @@ body{
             font-weight: 700;
             letter-spacing: 3px;
         }
+
+        &__img{
+            position: absolute;
+            right:5px;
+            transition: 0.3s all linear;
+        }
         @media screen and (min-width:500px) {
            align-self: flex-end;
            justify-self: flex-end;
@@ -125,7 +140,24 @@ body{
 }
 
 .moreInfo{
-    display:none;
+    
+    color: $black;
+    background: #ffffffc9;
+    display: flex;
+    flex-direction: column;
+}
+
+.inverted {
+    transform: rotate(180deg);
+}
+
+.hidden{
+    display: none;
+}
+.alignUp{
+    align-self: flex-start;
+}
+.moreInfo{
     grid-area: moreInfo;
 }
 

@@ -7,12 +7,12 @@ import nightBackground from '../assets/desktop/bg-image-nighttime.jpg'
 import arrowUp from '../assets/desktop/icon-arrow-up.svg'
 import arrowDown from '../assets/desktop/icon-arrow-down.svg'
 
-export function Clock() {
+export function Clock({onStateChange}) {
     const [timeData, setTimeData] = useState()
     const [greeting, setGreeting] = useState({})
-    const [backgroundImage, setBackgroundImage] = useState('');
     const [hour, setHour] = useState(0)
     const [minute, setMinute] = useState(0)
+    const [isopen, setIsOpen] = useState(false);
   
     useEffect(() => {
       const intervalId = setInterval(() => {
@@ -43,6 +43,11 @@ export function Clock() {
         document.body.style.backgroundImage = `url(${nightBackground})`;
       }
     };
+
+    const handleClick = () =>{
+      setIsOpen(!isopen);
+      onStateChange(!isopen);
+    }
     
     if (!timeData) {
       return <div>Loading...</div>
@@ -50,15 +55,15 @@ export function Clock() {
 
     return (
       <>
-        <div className='clock'>
+        <div className={isopen? 'clock alignUp' :'clock'}>
             <p className='clock__greeting'> <img src={greeting.icon} alt="icon"/>{greeting.text}</p>
             <p className='clock__time'>{`${hour}:${minute}`} <span className='clock__standard'>{timeData.abbreviation}</span></p>
             
             <p className='clock__location'>in {timeData.timezone}</p>
         </div>
-        <div className='clock__btn'>
-          <span className='clock__btn__text'>more</span>
-          <img  className='clock__btn__img' src={arrowUp} alt="icon"/>
+        <div className='clock__btn' onClick={handleClick}>
+          <span className='clock__btn__text'>{isopen? 'less':'more'}</span>
+          <img  className={ isopen? 'clock__btn__img inverted':'clock__btn__img'} src={arrowUp} alt="icon"/>
         </div>
       </>
     )

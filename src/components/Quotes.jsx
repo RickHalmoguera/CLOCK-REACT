@@ -4,7 +4,7 @@ import refreshBtn from '../assets/desktop/icon-refresh.svg'
 
 
 
-export function Quotes() {
+export function Quotes(isopen={isopen}) {
     const [quoteData, setQuoteData] = useState()
     
 
@@ -20,7 +20,7 @@ export function Quotes() {
       return <div>Loading...</div>
     }
   return (
-    <div className='quote'>
+    <div className={isopen.props?'quote hidden': 'quote'}>
         <p className='quote__text'>"{quoteData.content}"</p>
         <p className='quote__author'>{quoteData.author }</p>
         <img onClick={handleClick} className='quote__btn' src={refreshBtn} alt='refresh button' />
