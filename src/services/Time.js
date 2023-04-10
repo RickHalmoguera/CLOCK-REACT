@@ -1,4 +1,4 @@
-const API_URL ='http://worldtimeapi.org/api/ip'
+const API_URL ='https://worldtimeapi.org/api/ip'
 
 
 export async function getTime(props){
