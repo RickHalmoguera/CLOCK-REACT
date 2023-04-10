@@ -34,7 +34,7 @@ Users should be able to:
 ## Desktop
 
 ![](./src/assets/screenShootDesktop.png)
-![](./src/assets/desktopOpen.png)
+![](./src/assets/desktopOpennew.png)
 
 ### Links
 
