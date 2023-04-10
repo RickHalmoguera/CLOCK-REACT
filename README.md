@@ -9,6 +9,7 @@ This is a solution to the [Clock app challenge on Frontend Mentor](https://www.f
   - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
+  - [Folders](#folders)
   - [Built with](#built-with)
 - [Author](#author)
 
@@ -41,6 +42,10 @@ Users should be able to:
 - [Live Site URL](https://rickhalmoguera.github.io/CLOCK-REACT/)
 
 ## My process
+
+### Folders
+
+![](./src/assets/folders.png)
 
 ### Built with
 
