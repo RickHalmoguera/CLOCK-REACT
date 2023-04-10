@@ -14,11 +14,11 @@ function App() {
     
   };
   return (
-    <>
+    <div className= {isopen? 'appOpen':'app'}>
       <Quotes props ={isopen}/>
       <Clock  onStateChange={handleStateChange} props={isopen}/>
       <MoreInfo  props ={isopen}/>
-    </>
+    </div>
   )
 }
 

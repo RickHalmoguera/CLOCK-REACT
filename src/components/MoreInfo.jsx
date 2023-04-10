@@ -18,21 +18,20 @@ export function MoreInfo(isopen={isopen}) {
     
     <div className={isopen.props? 'moreInfo':"moreInfo hidden"}>
         <div className="moreInfo__timezone">
-            <p className="timezone__tag">current timezone</p>
-            <p className="timezone__text">{moreData.timezone}</p>
+          <p className="moreInfo__tag">current timezone</p>
+          <p className="moreInfo__text">{moreData.timezone}</p>
         </div>
         <div className="moreInfo__dayYear">
-            <p className="dayYear__tag">day of the year</p>
-            <p className="dayYear__text">{moreData.day_of_year}</p>
+          <p className="moreInfo__tag">day of the year</p>
+          <p className="moreInfo__text">{moreData.day_of_year}</p>
         </div>
-        <hr className="moreInfo__divider"/>
         <div className="moreInfo__dayWeek">
-            <p className="dayYear__tag">day of the week</p> 
-            <p className="dayYear__text">{moreData.day_of_week}</p>
+          <p className="moreInfo__tag">day of the week</p> 
+          <p className="moreInfo__text">{moreData.day_of_week}</p>
         </div>
         <div className="moreInfo__week">
-            <p className="week__tag">week number</p> 
-            <p className="week__text">{moreData.week_number}</p>
+          <p className="moreInfo__tag">week number</p> 
+          <p className="moreInfo__text">{moreData.week_number}</p>
         </div>
     </div>
   )

@@ -2,10 +2,13 @@ import * as CLOCK_API from '../services/Time'
 import { useState, useEffect } from 'react'
 import Moon from '../assets/desktop/icon-moon.svg'
 import Sun from '../assets/desktop/icon-sun.svg'
-import dayBackground from '../assets/desktop/bg-image-daytime.jpg'
-import nightBackground from '../assets/desktop/bg-image-nighttime.jpg'
+import dayBackgroundDesktop from '../assets/desktop/bg-image-daytime.jpg'
+import nightBackgroundDesktop from '../assets/desktop/bg-image-nighttime.jpg'
+import dayBackgroundMobile from '../assets/mobile/bg-image-daytime.jpg'
+import nightBackgroundMobile from '../assets/mobile/bg-image-nighttime.jpg'
+import dayBackgroundTablet from '../assets/tablet/bg-image-daytime.jpg'
+import nightBackgroundTablet from '../assets/tablet/bg-image-nighttime.jpg'
 import arrowUp from '../assets/desktop/icon-arrow-up.svg'
-import arrowDown from '../assets/desktop/icon-arrow-down.svg'
 
 export function Clock({onStateChange}) {
     const [timeData, setTimeData] = useState()
@@ -34,13 +37,32 @@ export function Clock({onStateChange}) {
     const displayGreeting = (data) => {
       if (new Date(data.datetime).getHours() > 5 && new Date(data.datetime).getHours() < 12) {
         setGreeting({ icon: Sun, text: 'Good Morning' });
-        document.body.style.backgroundImage = `url(${dayBackground})`;
+        if(window.innerWidth < 500){
+          document.body.style.backgroundImage = `url(${dayBackgroundMobile})`;
+        }else if(window.innerWidth > 500 && window.innerWidth< 1000){
+          document.body.style.backgroundImage = `url(${dayBackgroundTablet})`;
+        }else{
+          document.body.style.backgroundImage = `url(${dayBackgroundDesktop})`;
+        }
+        
       } else if (new Date(data.datetime).getHours() >= 12 && new Date(data.datetime).getHours() < 18) {
         setGreeting({ icon: Sun, text: 'Good Afternoon' });
-        document.body.style.backgroundImage = `url(${dayBackground})`;
+        if(window.innerWidth < 500){
+          document.body.style.backgroundImage = `url(${dayBackgroundMobile})`;
+        }else if(window.innerWidth > 500 && window.innerWidth< 1000){
+          document.body.style.backgroundImage = `url(${dayBackgroundTablet})`;
+        }else{
+          document.body.style.backgroundImage = `url(${dayBackgroundDesktop})`;
+        }
       } else {
         setGreeting({ icon: Moon, text: 'Good Evening' });
-        document.body.style.backgroundImage = `url(${nightBackground})`;
+        if(window.innerWidth < 500){
+          document.body.style.backgroundImage = `url(${nightBackgroundMobile})`;
+        }else if(window.innerWidth > 500 && window.innerWidth< 1000){
+          document.body.style.backgroundImage = `url(${nightBackgroundTablet})`;
+        }else{
+          document.body.style.backgroundImage = `url(${nightBackgroundDesktop})`;
+        }
       }
     };
 
